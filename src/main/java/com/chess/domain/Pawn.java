@@ -3,15 +3,16 @@ package com.chess.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pawn {
+public class Pawn implements ChessPiece {
 
-    public List<Position> getPossibleMoves(Position position) {
-        List<Position> moves = new ArrayList<>();
+    public static final int DIRECTION = 1;
+
+    public Positions getPossibleMoves(Position position) {
+        List<Position> possibleMoves = new ArrayList<>();
         int file = position.file();
         int rank = position.rank();
 
-        int direction = 1;
-        moves.add(new Position(file, rank + direction));
-        return moves;
+        possibleMoves.add(new Position(file, rank + DIRECTION));
+        return new Positions(possibleMoves);
     }
 }

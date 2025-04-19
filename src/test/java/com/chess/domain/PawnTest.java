@@ -12,7 +12,7 @@ class PawnTest {
     void shouldReturnPossibleMoves() {
         Pawn pawn = new Pawn();
         Position position = Position.from("G1");
-        List<Position> possibleMoves = pawn.getPossibleMoves(position);
-        assertEquals(List.of(Position.from("G2")), possibleMoves);
+        Positions possibleMoves = pawn.getPossibleMoves(position);
+        assertEquals(List.of("G2"), possibleMoves.toChessNotation());
     }
 }
