@@ -9,12 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class QueenTest {
 
+    private final ChessBoard board = new ChessBoard();
+
     @Test
     void shouldReturnAllMovesFromD4() {
         Queen queen = new Queen();
-        Position from = Position.from("D4");
-
-        Positions possibleMoves = queen.getPossibleMoves(from);
+        Position from = board.parsePosition("D4");
+        Positions possibleMoves = queen.getPossibleMoves(from, board);
 
         List<String> expectedMoves = List.of(
                 "C3", "B2", "A1",
@@ -27,15 +28,14 @@ class QueenTest {
                 "E5", "F6", "G7", "H8"
         );
 
-        assertEquals(expectedMoves, possibleMoves.toChessNotation());
+        assertEquals(expectedMoves, board.toChessNotation(possibleMoves));
     }
 
     @Test
     void shouldReturnValidMovesFromCornerA1() {
         Queen queen = new Queen();
-        Position from = Position.from("A1");
-
-        Positions possibleMoves = queen.getPossibleMoves(from);
+        Position from = board.parsePosition("A1");
+        Positions possibleMoves = queen.getPossibleMoves(from, board);
 
         List<String> expectedMoves = List.of(
                 "B2", "C3", "D4", "E5", "F6", "G7", "H8",
@@ -43,7 +43,6 @@ class QueenTest {
                 "A2", "A3", "A4", "A5", "A6", "A7", "A8"
         );
 
-        boolean matchesPossibleMoves = expectedMoves.containsAll(possibleMoves.toChessNotation());
-        assertTrue(matchesPossibleMoves);
+        assertTrue(expectedMoves.containsAll(board.toChessNotation(possibleMoves)));
     }
 }
