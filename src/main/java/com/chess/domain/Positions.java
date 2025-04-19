@@ -1,7 +1,6 @@
 package com.chess.domain;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Positions {
     private final List<Position> positions;
@@ -10,14 +9,7 @@ public class Positions {
         this.positions = positions;
     }
 
-    public List<String> toChessNotation() {
-        return positions.stream()
-                .map(Position::toChessNotation)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public String toString() {
-        return toChessNotation().toString();
+    public List<Position> get() {
+        return positions;
     }
 }
