@@ -34,6 +34,6 @@ class ChessPositionCalculatorTest {
 
         InvalidPositionException invalidPositionException = assertThrows(InvalidPositionException.class, () -> chessPositionCalculator.calculate(new Pawn(), Position.from("H9")));
 
-        assertEquals(invalidPositionException.getMessage(), "Rank '9' is out of bounds. Only ranks 1 to 8 are supported.");
+        assertEquals("Rank '9' is out of bounds. Only ranks 1 to 8 are supported.", invalidPositionException.getMessage());
     }
 }
