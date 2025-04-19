@@ -44,4 +44,9 @@ public record Position(Integer file, Integer rank) {
             throw new InvalidPositionException("Rank '" + rankNumber + "' is out of bounds. Only ranks 1 to 8 are supported.");
         }
     }
+
+    public String toChessNotation() {
+        return String.format("%c%d", (char) ('A' + file), rank + 1);
+    }
+
 }
