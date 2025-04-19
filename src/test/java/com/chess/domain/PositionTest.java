@@ -16,13 +16,13 @@ class PositionTest {
     @Test
     void shouldThrowExceptionGivenInvalidPositionForFile() {
         InvalidPositionException invalidPositionException = assertThrows(InvalidPositionException.class, () -> Position.from("J9"));
-        assertEquals("File out of bounds in position: J9", invalidPositionException.getMessage());
+        assertEquals("File 'J' is out of bounds. Only files A to H are supported.", invalidPositionException.getMessage());
     }
 
     @Test
     void shouldThrowExceptionGivenInvalidPositionForRank() {
         InvalidPositionException invalidPositionException = assertThrows(InvalidPositionException.class, () -> Position.from("A9"));
-        assertEquals("Rank out of bounds in position: A9", invalidPositionException.getMessage());
+        assertEquals("Rank '9' is out of bounds. Only ranks 1 to 8 are supported.", invalidPositionException.getMessage());
     }
 
     @Test
