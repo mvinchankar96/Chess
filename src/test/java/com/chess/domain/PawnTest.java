@@ -8,11 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PawnTest {
 
+    private final ChessBoard board = new ChessBoard();
+
     @Test
     void shouldReturnPossibleMoves() {
         Pawn pawn = new Pawn();
-        Position position = Position.from("G1");
-        Positions possibleMoves = pawn.getPossibleMoves(position);
-        assertEquals(List.of("G2"), possibleMoves.toChessNotation());
+        Position position = board.parsePosition("G1");
+        Positions possibleMoves = pawn.getPossibleMoves(position, board);
+        assertEquals(List.of("G2"), board.toChessNotation(possibleMoves));
     }
 }
