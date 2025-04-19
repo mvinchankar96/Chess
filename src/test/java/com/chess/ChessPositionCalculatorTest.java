@@ -1,7 +1,9 @@
 package com.chess;
 
+import com.chess.domain.King;
 import com.chess.domain.Pawn;
 import com.chess.domain.Position;
+import com.chess.domain.Positions;
 import com.chess.exception.InvalidPositionException;
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +17,15 @@ class ChessPositionCalculatorTest {
     @Test
     void shouldCalculatePossibleMovesGivenPositionForPawn() {
         ChessPositionCalculator chessPositionCalculator = new ChessPositionCalculator();
-        List<Position> possibleMoves = chessPositionCalculator.calculate(new Pawn(), Position.from("H7"));
-        assertEquals(List.of(Position.from("H8")), possibleMoves);
+        Positions possibleMoves = chessPositionCalculator.calculate(new Pawn(), Position.from("H7"));
+        assertEquals(List.of("H8"), possibleMoves.toChessNotation());
+    }
+
+    @Test
+    void shouldCalculatePossibleMovesGivenPositionForKing() {
+        ChessPositionCalculator chessPositionCalculator = new ChessPositionCalculator();
+        Positions possibleMoves = chessPositionCalculator.calculate(new King(), Position.from("D5"));
+        assertEquals(List.of("C4", "C5", "C6", "D4", "D6", "E4", "E5", "E6"), possibleMoves.toChessNotation());
     }
 
     @Test

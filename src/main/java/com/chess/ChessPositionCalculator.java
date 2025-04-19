@@ -1,13 +1,12 @@
 package com.chess;
 
-import com.chess.domain.Pawn;
+import com.chess.domain.ChessPiece;
 import com.chess.domain.Position;
-
-import java.util.List;
+import com.chess.domain.Positions;
 
 public class ChessPositionCalculator {
 
-    public List<Position> calculate(Pawn pawn, Position position) {
-        return pawn.getPossibleMoves(position);
+    public Positions calculate(ChessPiece chessPiece, Position position) {
+        return chessPiece.getPossibleMoves(position);
     }
 }
